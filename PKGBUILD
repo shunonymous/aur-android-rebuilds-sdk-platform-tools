@@ -1,30 +1,28 @@
-# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
+# Maintainer: Shun Terabayashi <shunonymous@gmail.com>
+# Contributor: Zhang Hai <dreaming.in.code.zh@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Gordin <9ordin @t gmail dot com>
 # Contributor: Christoph Bayer <chrbayer@criby.de>
 
-pkgname=android-sdk-platform-tools
-pkgver=29.0.5
+pkgname=android-rebuilds-sdk-platform-tools-bin
+pkgver=29.0.6
 pkgrel=1
 pkgdesc='Platform-Tools for Google Android SDK (adb and fastboot)'
 arch=('x86_64')
-url='http://developer.android.com/sdk/index.html'
+url='https://android-rebuilds.beuc.net/'
 license=('custom')
 depends_x86_64=('zlib' 'ncurses')
 provides=('adb' 'android-tools')
-conflicts=('adb')
 install="${pkgname}.install"
-source=("https://dl.google.com/android/repository/platform-tools_r${pkgver}-linux.zip"
-        "adb.service"
-        "license.html")
-sha1sums=('2016a7e8f3f696583c0069881f4270365e247cd7'
-          '49a40c129199844603afe71fce69c0908e062393'
-          'bfb91be7e0b602d765b7a1fcaf0ce1b7e1a93faa')
+source=("https://android-rebuilds.beuc.net/dl/repository/sdk-repo-linux-platform-tools-eng.11.0.0_r27.zip"
+        "adb.service")
+sha1sums=('33fd0f0d45e1030d917c9e3df57e1b4095293bc7'
+          '49a40c129199844603afe71fce69c0908e062393')
 
 package() {
 
   install -Dm644 "${srcdir}/adb.service" "${pkgdir}/usr/lib/systemd/system/adb.service"
-  install -Dm644 "${srcdir}/license.html" "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
+  install -Dm644 "${srcdir}/platform-tools/NOTICE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -d "${pkgdir}/etc/profile.d"
   echo 'export PATH="${PATH}:/opt/android-sdk/platform-tools"' >"${pkgdir}/etc/profile.d/${pkgname}.sh"
