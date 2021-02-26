@@ -6,13 +6,13 @@
 
 pkgname=android-rebuilds-sdk-platform-tools-bin
 pkgver=29.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Platform-Tools for Google Android SDK (adb and fastboot)'
 arch=('x86_64')
 url='https://android-rebuilds.beuc.net/'
 license=('custom')
 depends_x86_64=('zlib' 'ncurses')
-provides=('adb' 'android-tools')
+provides=('adb' 'android-tools' 'android-sdk-platform-tools')
 install="${pkgname}.install"
 source=("https://android-rebuilds.beuc.net/dl/repository/sdk-repo-linux-platform-tools-eng.11.0.0_r27.zip"
         "adb.service")
